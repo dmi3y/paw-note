@@ -1,12 +1,3 @@
 {
-  "subscriptions": [
-    {
-      "endpoint": "https://fcm.googleapis.com/fcm/send/f8ohIsSrRf0:APA91bG0otN81dnELvdrolKwaGtntS1eKM5Yw3jwdyOi9jTFuCvtRgz3PqOsTL9IA5K4loyjFHFh8EbKagJg5hf0btB_cTY0hL_tCPFJB5bYuApHX2YO0xiY1glBplq3H8brHeZaclAN",
-      "expirationTime": null,
-      "keys": {
-        "p256dh": "BMi8kwocjC9RdzS74_NMkFqj7B4USw4glJgievD83CLmrNaSOj-pDZTjQjyn30hdNfOxGiyGdsjoqq0bGog7yNk",
-        "auth": "D_RQjBdRMdurX7iY46sAFA"
-      }
-    }
-  ]
+  "subscriptions": []
 }
