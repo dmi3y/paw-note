@@ -13,8 +13,8 @@ export default function Home() {
 
   const checkServiceWorker = async () => {
     if ("serviceWorker" in navigator) {
-      const registration = await navigator.serviceWorker.getRegistration();
-      const subscription = await registration?.pushManager.getSubscription();
+      const registration = await navigator.serviceWorker?.getRegistration();
+      const subscription = await registration?.pushManager?.getSubscription();
       setServiceWorkerStatus(
         registration?.active
           ? { status: "registered", registration: registration, subscription }
