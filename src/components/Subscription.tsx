@@ -20,6 +20,9 @@ export default function Subscription({
       });
     if (subscription) {
       await postToServer("/api/add-subscription", subscription);
+    } else {
+      console.log("subscription is null");
+      console.log({ serviceWorker });
     }
     checkServiceWorker();
   }
