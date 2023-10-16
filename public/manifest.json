@@ -1,0 +1,21 @@
+{
+  "name": "Paw notification",
+  "short_name": "WebPushTest",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#90cdf4",
+  "theme_color": "#90cdf4",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "paw-note.png",
+      "sizes": "500x500",
+      "type": "image&#x2F;png"
+    },
+    {
+      "src": "paw-note.png",
+      "sizes": "192x192",
+      "type": "image&#x2F;png"
+    }
+  ]
+}
