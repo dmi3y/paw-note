@@ -1,7 +1,7 @@
 import { Low } from "lowdb";
 import { JSONFile } from "lowdb/node";
 
-const db = new Low<{ subscriptions: any[] }>(new JSONFile("db.json"), {
+const db = new Low<{ subscriptions: any[] }>(new JSONFile("/tmp/db.json"), {
   subscriptions: [],
 });
 
