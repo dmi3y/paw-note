@@ -12,7 +12,7 @@ export default function Subscription({
 }) {
   async function subscribeToPush() {
     const subscription =
-      await serviceWorker.registration?.pushManager.subscribe({
+      await serviceWorker.registration?.pushManager?.subscribe({
         userVisibleOnly: true,
         applicationServerKey: urlB64ToUint8Array(
           process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY
