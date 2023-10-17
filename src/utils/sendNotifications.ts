@@ -32,7 +32,7 @@ export default async function sendNotifications(subscriptions: any[]) {
   );
 
   try {
-    const result = await goes;
+    const results = await goes;
 
     console.log("All notifications sent");
   } catch (err) {
