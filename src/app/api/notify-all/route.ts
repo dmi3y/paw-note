@@ -1,15 +1,23 @@
-import db from "~/utils/db";
+import { kv } from "@vercel/kv";
 import sendNotifications from "~/utils/sendNotifications";
 
 export async function POST(req: Request) {
-  await db.read();
-  const subscriptions = db.data.subscriptions;
-  sendNotifications(subscriptions);
-  const data = db.data;
-  return Response.json(
-    { ...data },
-    {
-      status: 200,
-    }
-  );
+  try {
+    const subs = await kv.hgetall("subscriptions");
+    const subscriptions = Object.values(subs || {});
+    sendNotifications(subscriptions);
+    return Response.json(
+      { subscriptions },
+      {
+        status: 200,
+      }
+    );
+  } catch (err) {
+    return Response.json(
+      { err },
+      {
+        status: 500,
+      }
+    );
+  }
 }

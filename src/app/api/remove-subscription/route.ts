@@ -1,18 +1,22 @@
-import db from "~/utils/db";
+import { kv } from "@vercel/kv";
 
 export async function POST(req: Request) {
   const subscription = await req.json();
-  await db.read();
-  const newData = db.data.subscriptions.filter(
-    (sub) => sub.endpoint !== subscription.endpoint
-  );
-  db.data.subscriptions = newData;
-  await db.write();
-  const data = db.data;
-  return Response.json(
-    { ...data },
-    {
-      status: 200,
-    }
-  );
+
+  try {
+    const response = await kv.hdel("subscriptions", subscription.endpoint);
+    return Response.json(
+      { response },
+      {
+        status: 200,
+      }
+    );
+  } catch (err) {
+    return Response.json(
+      { err },
+      {
+        status: 500,
+      }
+    );
+  }
 }
