@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@vercel/kv": "^0.2.3",
-    "lowdb": "^6.1.0",
     "next": "13.5.4",
     "react": "^18",
     "react-dom": "^18",

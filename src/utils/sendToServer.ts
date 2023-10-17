@@ -1,10 +1,11 @@
-export default async function postToServer(
+export default async function sendToServer(
   url: string,
-  data?: { [key: string]: any }
+  data?: { [key: string]: any },
+  method: "POST" | "DELETE" = "POST"
 ) {
   const body = data ? JSON.stringify(data) : null;
   return await fetch(url, {
-    method: "POST",
+    method,
     headers: {
       "Content-Type": "application/json",
     },

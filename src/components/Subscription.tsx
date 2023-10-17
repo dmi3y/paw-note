@@ -1,6 +1,6 @@
 "use client";
 import { ServiceWorkerStatus } from "~/app/types";
-import postToServer from "~/utils/postToServer";
+import postToServer from "~/utils/sendToServer";
 import urlB64ToUint8Array from "~/utils/urlB64ToUint8Array";
 
 export default function Subscription({
@@ -30,9 +30,13 @@ export default function Subscription({
   async function unsubscribeFromPush() {
     const subscription = serviceWorker?.subscription;
     if (subscription) {
-      await postToServer("/api/remove-subscription", {
-        endpoint: subscription.endpoint,
-      });
+      await postToServer(
+        "/api/remove-subscription",
+        {
+          endpoint: subscription.endpoint,
+        },
+        "DELETE"
+      );
       await subscription.unsubscribe();
     }
     checkServiceWorker();

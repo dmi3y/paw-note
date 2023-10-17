@@ -1,6 +1,6 @@
 import { kv } from "@vercel/kv";
 
-export async function POST(req: Request) {
+export async function DELETE(req: Request) {
   const subscription = await req.json();
 
   try {

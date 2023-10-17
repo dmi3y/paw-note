@@ -1,6 +1,6 @@
 "use client";
 import { ServiceWorkerStatus } from "~/app/types";
-import postToServer from "~/utils/postToServer";
+import postToServer from "~/utils/sendToServer";
 
 export default function Notifications({
   serviceWorker,
