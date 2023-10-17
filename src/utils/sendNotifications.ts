@@ -17,29 +17,25 @@ function createNotification() {
   };
 }
 
-export default function sendNotifications(subscriptions: any[]) {
+export default async function sendNotifications(subscriptions: any[]) {
   const notification = JSON.stringify(createNotification());
   const options = {
     TTL: 10000,
     vapidDetails: vapidDetails,
   };
 
-  subscriptions.forEach(async (subscription) => {
-    const endpoint = subscription.endpoint;
-    const id = endpoint.substr(endpoint.length - 8, endpoint.length);
+  const goes = Promise.all(
+    subscriptions.map((subscription) => {
+      const endpoint = subscription.endpoint;
+      return webpush.sendNotification(subscription, notification, options);
+    })
+  );
 
-    try {
-      const result = await webpush.sendNotification(
-        subscription,
-        notification,
-        options
-      );
+  try {
+    const result = await goes;
 
-      console.log(`Endpoint ID: ${id}`);
-      console.log(`Result: ${result.statusCode}`);
-    } catch (err) {
-      console.log(`Endpoint ID: ${id}`);
-      console.log(`Error: ${err}`);
-    }
-  });
+    console.log("All notifications sent");
+  } catch (err) {
+    console.log("Error sending notifications, reason: ", err);
+  }
 }
